@@ -159,6 +159,12 @@ pub fn is(_stream: Stream) -> bool {
     false
 }
 
+/// returns true if this is a tty
+#[cfg(all(not(unix), target_env = "sgx"))]
+pub fn is(_stream: Stream) -> bool {
+    false
+}
+
 #[cfg(test)]
 mod tests {
     use super::{is, Stream};
